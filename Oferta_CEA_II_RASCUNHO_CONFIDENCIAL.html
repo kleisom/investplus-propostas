@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto CEA II — Oferta (Rascunho Confidencial) | Investplus</title>
+<style>
+  :root{
+    --navy:#003087;
+    --navy-deep:#001C45;
+    --navy-soft:#EAF0FA;
+    --green:#00B140;
+    --green-deep:#017A2C;
+    --gold:#9C7A29;
+    --gold-deep:#6E5419;
+    --gold-light:#E8C766;
+    --gold-soft:#F6EFDC;
+    --ink:#181C22;
+    --ink-soft:#535A66;
+    --ink-faint:#8A8F99;
+    --paper:#FFFFFF;
+    --paper-soft:#F6F7FA;
+    --line:#E2E5EC;
+    --radius:14px;
+    --radius-sm:8px;
+    --shadow:0 10px 30px rgba(0,24,69,0.08);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--paper-soft);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
+  img,svg{max-width:100%;display:block;}
+
+  /* ===== TOPBAR ===== */
+  .topbar{
+    background:var(--navy-deep);
+    color:#fff;
+    padding:14px 0;
+    border-bottom:1px solid rgba(232,199,102,0.25);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .topbar .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.06em;font-size:14px;}
+  .topbar .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--gold-light);}
+  .topbar .tag{font-size:12px;color:var(--gold-light);letter-spacing:.04em;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 62%,#0B2E73 100%);
+    color:#fff;
+    padding:72px 0 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    border-radius:50%;border:1px solid rgba(232,199,102,0.18);
+  }
+  .hero::before{
+    content:"";position:absolute;right:-40px;top:60px;width:280px;height:280px;
+    border-radius:50%;border:1px solid rgba(232,199,102,0.12);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.12em;font-weight:700;
+    color:var(--gold-light);text-transform:uppercase;margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:18px;height:1px;background:var(--gold-light);}
+  .hero h1{font-size:40px;font-weight:800;line-height:1.15;letter-spacing:-0.01em;margin-bottom:16px;}
+  .hero h1 span{color:var(--gold-light);}
+  .hero p.lead{font-size:17px;color:rgba(255,255,255,0.82);max-width:520px;margin-bottom:30px;}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .stat-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:var(--radius-sm);
+    padding:14px 12px;
+  }
+  .stat-card .v{font-size:18px;font-weight:800;color:#fff;}
+  .stat-card .l{font-size:11px;color:rgba(255,255,255,0.65);margin-top:4px;letter-spacing:.02em;}
+
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:8px;margin-top:26px;
+    background:var(--green);color:#fff;font-weight:700;font-size:14.5px;
+    padding:13px 24px;border-radius:30px;text-decoration:none;
+    box-shadow:0 8px 20px rgba(0,177,64,0.3);
+  }
+
+  /* LTV ring */
+  .ltv-box{display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .ltv-ring-wrap{position:relative;width:240px;height:240px;}
+  .ltv-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .ltv-center .big{font-size:38px;font-weight:800;color:#fff;}
+  .ltv-center .small{font-size:11px;color:rgba(255,255,255,0.7);letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
+  .ltv-legend{display:flex;gap:20px;margin-top:18px;font-size:12.5px;color:rgba(255,255,255,0.85);}
+  .ltv-legend .li{display:flex;align-items:center;gap:6px;}
+  .ltv-legend .sw{width:9px;height:9px;border-radius:50%;}
+
+  /* ===== SECTIONS ===== */
+  section{padding:64px 0;}
+  section.alt{background:var(--paper);}
+  .section-head{max-width:680px;margin-bottom:36px;}
+  .section-eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--gold-deep);text-transform:uppercase;margin-bottom:10px;}
+  h2{font-size:28px;font-weight:800;color:var(--navy-deep);letter-spacing:-0.01em;margin-bottom:10px;}
+  h3{font-size:18px;font-weight:700;color:var(--navy-deep);margin-bottom:8px;}
+  p{color:var(--ink-soft);font-size:15.5px;}
+  .lead-p{font-size:16.5px;color:var(--ink-soft);max-width:760px;}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px;box-shadow:var(--shadow);
+  }
+  .card h3{margin-bottom:10px;}
+  .card .ico{
+    width:38px;height:38px;border-radius:10px;background:var(--navy-soft);color:var(--navy);
+    display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:14px;font-size:16px;
+  }
+  .card.gold .ico{background:var(--gold-soft);color:var(--gold-deep);}
+
+  .highlight{
+    background:var(--gold-soft);border:1px solid #E3CE9A;border-radius:var(--radius);
+    padding:22px 26px;display:flex;gap:18px;align-items:flex-start;
+  }
+  .highlight .num{font-size:30px;font-weight:800;color:var(--gold-deep);white-space:nowrap;}
+  .highlight p{color:#5E4C1E;font-size:14.5px;margin:0;}
+
+  .phase-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--navy);background:var(--navy-soft);padding:5px 11px;border-radius:20px;margin-bottom:14px;}
+  .phase-badge.gold{color:var(--gold-deep);background:#fff;}
+  .phase-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px;}
+  .phase-list li{font-size:14.5px;color:var(--ink-soft);padding-left:18px;position:relative;}
+  .phase-list li::before{content:"";position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .card.phase h3{margin-top:0;}
+  .card.phase.gold .phase-list li::before{background:var(--gold-deep);}
+
+  /* diagram */
+  .diagram-wrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px 20px;box-shadow:var(--shadow);}
+
+  /* CCB explainer steps */
+  .ccb-steps{display:flex;align-items:stretch;gap:0;margin-top:8px;}
+  .ccb-step{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative;}
+  .ccb-step .tag{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 9px;border-radius:20px;margin-bottom:12px;
+  }
+  .ccb-step.debt .tag{background:var(--navy-soft);color:var(--navy);}
+  .ccb-step.bank .tag{background:var(--gold-soft);color:var(--gold-deep);}
+  .ccb-step.inv .tag{background:#E5F6EA;color:var(--green-deep);}
+  .ccb-arrow{display:flex;align-items:center;justify-content:center;width:36px;color:var(--ink-faint);font-size:20px;}
+  .law-note{font-size:13px;color:var(--ink-faint);margin-top:14px;border-top:1px dashed var(--line);padding-top:14px;}
+
+  /* table */
+  .table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  table{width:100%;min-width:640px;border-collapse:collapse;font-size:14.5px;background:var(--paper);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);}
+  thead th{background:var(--navy-deep);color:#fff;text-align:left;padding:13px 16px;font-weight:700;font-size:13px;letter-spacing:.02em;}
+  tbody td{padding:13px 16px;border-bottom:1px solid var(--line);color:var(--ink-soft);}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr.hero-row td{background:var(--gold-soft);color:#5E4C1E;font-weight:700;}
+  tbody tr.hero-row td:first-child{color:var(--gold-deep);}
+  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;}
+  .pill.green{background:#E5F6EA;color:var(--green-deep);}
+  .pill.gray{background:#EEF0F3;color:var(--ink-soft);}
+
+  /* escrow calc */
+  .calc{background:var(--navy-deep);color:#fff;border-radius:var(--radius);padding:32px;}
+  .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;}
+  .calc input[type=range]{width:100%;margin:14px 0 6px;accent-color:var(--gold-light);}
+  .calc .amt{font-size:26px;font-weight:800;color:var(--gold-light);}
+  .calc-out{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+  .calc-out .box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:10px;padding:14px;}
+  .calc-out .box .v{font-size:18px;font-weight:800;}
+  .calc-out .box .l{font-size:11.5px;color:rgba(255,255,255,0.65);margin-top:3px;}
+  .calc-note{font-size:12.5px;color:rgba(255,255,255,0.6);margin-top:16px;line-height:1.6;}
+
+  /* how-to-invest steps */
+  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .step-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);}
+  .step-circle{
+    width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;
+  }
+  .step-card h3{margin-bottom:8px;}
+  .step-card p{font-size:14px;margin:0;}
+
+  /* confidential stamp + watermark */
+  .sticky-stack{position:sticky;top:0;z-index:80;}
+  .confidential-bar{
+    background:#7A1F1F;color:#fff;text-align:center;font-size:12px;font-weight:800;
+    letter-spacing:.08em;padding:8px 16px;text-transform:uppercase;
+  }
+  .watermark-overlay{
+    position:fixed;inset:0;z-index:90;pointer-events:none;
+    background-repeat:repeat;opacity:0.12;
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMjAiIGhlaWdodD0iMzIwIj48ZyBmaWxsPSIjN0ExRjFGIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjx0ZXh0IHg9IjgwIiB5PSI4MCIgdHJhbnNmb3JtPSJyb3RhdGUoLTI4IDgwIDgwKSI+Q09ORklERU5DSUFMPC90ZXh0Pjx0ZXh0IHg9IjI2MCIgeT0iMjQwIiB0cmFuc2Zvcm09InJvdGF0ZSgtMjggMjYwIDI0MCkiPkNPTkZJREVOQ0lBTDwvdGV4dD48L2c+PC9zdmc+");
+  }
+
+  footer{background:var(--navy-deep);color:rgba(255,255,255,0.75);padding:40px 0 28px;}
+  .stamp-box{
+    display:inline-block;border:2px solid #E07A6F;color:#E07A6F;font-weight:800;
+    padding:10px 22px;border-radius:8px;font-size:14px;letter-spacing:.04em;text-align:center;
+    margin-bottom:18px;transform:rotate(-2deg);
+  }
+  .stamp-box span{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;margin-top:3px;color:rgba(224,122,111,0.85);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+  footer .brand{color:#fff;font-weight:800;font-size:15px;letter-spacing:.04em;margin-bottom:6px;}
+  footer small{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;display:block;margin-top:18px;max-width:760px;}
+
+  .reveal{opacity:1;}
+
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .stat-row{grid-template-columns:repeat(2,1fr);}
+    .grid-3{grid-template-columns:1fr;}
+    .grid-2{grid-template-columns:1fr;}
+    .steps-grid{grid-template-columns:1fr;}
+    .ccb-steps{flex-direction:column;}
+    .ccb-arrow{transform:rotate(90deg);margin:4px auto;}
+    .calc-row{grid-template-columns:1fr;}
+    .calc-out{grid-template-columns:1fr 1fr;}
+    h1{font-size:30px !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="watermark-overlay"></div>
+
+<div class="sticky-stack">
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand"><span class="dot"></span> INVESTPLUS</div>
+      <div class="tag">Oferta · Projeto CEA II</div>
+    </div>
+  </div>
+  <div class="confidential-bar">Confidencial · Não divulgar · Sem validade comercial</div>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Oferta pública via Investplus</div>
+      <h1>Projeto CEA II<br><span>Alphaville · Barueri, SP</span></h1>
+      <p class="lead">Invista em uma operação de crédito via Cédula de Crédito Bancário com garantia imobiliária, distribuída sob o ambiente regulado da Resolução CVM nº 88/2022 — remuneração pós-fixada com a segurança de um ativo real de alto valor.</p>
+      <div class="stat-row">
+        <div class="stat-card"><div class="v">R$ 10 MM</div><div class="l">VALOR DA CAPTAÇÃO</div></div>
+        <div class="stat-card"><div class="v">CDI + 5%</div><div class="l">REMUNERAÇÃO a.a.</div></div>
+        <div class="stat-card"><div class="v">18 meses</div><div class="l">VENCIMENTO (BULLET)</div></div>
+        <div class="stat-card"><div class="v">R$ 110 MM</div><div class="l">AVALIAÇÃO DO IMÓVEL</div></div>
+      </div>
+      <a href="#como-investir" class="hero-cta">Quero investir →</a>
+    </div>
+    <div class="ltv-box">
+      <div class="ltv-ring-wrap">
+        <svg viewBox="0 0 240 240" width="240" height="240">
+          <circle cx="120" cy="120" r="100" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="18"/>
+          <circle cx="120" cy="120" r="100" fill="none" stroke="#E8C766" stroke-width="18"
+            stroke-dasharray="57.12 571.2" stroke-linecap="round" transform="rotate(-90 120 120)"/>
+        </svg>
+        <div class="ltv-center">
+          <div class="big">9,1%</div>
+          <div class="small">LTV da operação</div>
+        </div>
+      </div>
+      <div class="ltv-legend">
+        <div class="li"><span class="sw" style="background:#E8C766"></span> Captação R$10MM</div>
+        <div class="li"><span class="sw" style="background:rgba(255,255,255,0.25)"></span> Imóvel R$110MM</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="alt reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">A plataforma por trás desta oferta</div>
+      <h2>Sobre a Investplus</h2>
+      <p class="lead-p">A Investplus (FCJ Invest S.A.) é uma plataforma eletrônica de investimento participativo regulada pela Comissão de Valores Mobiliários, operando sob a Resolução CVM nº 88/2022. A plataforma já estruturou e conduziu ofertas públicas para empresas de diferentes setores — tecnologia, ventures, eventos, mineração e agronegócio — sempre sob o mesmo padrão de governança documental, conformidade regulatória e transparência com o investidor.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="ico">①</div>
+        <h3>Experiência operacional</h3>
+        <p>Histórico de estruturação de ofertas do desenho jurídico ao encerramento — documentação, registro na CVM, formalização e acompanhamento pós-captação.</p>
+      </div>
+      <div class="card">
+        <div class="ico">②</div>
+        <h3>Inteligência de negócio</h3>
+        <p>Capacidade de desenhar estruturas sob medida — equity, dívida conversível e, nesta operação, crédito estruturado com garantia real e mecanismo próprio de proteção ao investidor.</p>
+      </div>
+      <div class="card gold">
+        <div class="ico">③</div>
+        <h3>Segurança regulatória</h3>
+        <p>Operação integralmente conduzida dentro do regime de dispensa de registro da CVM 88/2022 — com escrituração, prestação de contas periódica e fiscalização contínua da plataforma.</p>
+      </div>
+    </div>
+    <div class="highlight" style="margin-top:22px;">
+      <p><strong>Governança antes da publicação.</strong> Toda oferta estruturada pela Investplus passa pelo crivo do Conselho de Investimentos da plataforma, responsável por avaliar a operação e definir a janela disponível para o seu lançamento. Esse crivo é especialmente crítico diante do volume de ofertas atualmente na fila de avaliação da Investplus — nem toda operação avança, e é justamente essa seletividade, e não a simples publicação de qualquer oferta, que sustenta a credibilidade de cada operação diante do mercado, dos investidores e das empresas emissoras.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">O ativo que sustenta a operação</div>
+      <h2>A torre em Alphaville</h2>
+      <p class="lead-p">O imóvel objeto da garantia é uma torre corporativa localizada em Alphaville, Barueri (SP) — uma das regiões empresariais mais valorizadas do país. O ativo foi adquirido pelo grupo proprietário com deságio relevante em relação ao seu valor de mercado e encontra-se em processo de reposicionamento (retrofit), com conversão de uso de corporativo para residencial premium com serviços.</p>
+    </div>
+    <div class="highlight">
+      <div class="num">9,1%</div>
+      <p><strong>Loan-to-Value (LTV) extremamente conservador.</strong> Quando registrada a garantia real sobre o imóvel — Fase 2 da estrutura de garantias, detalhada a seguir — os R$10 milhões captados representarão apenas 9,1% do valor de mercado do ativo (R$110 milhões). Ou seja, cada R$1,00 captado será coberto por aproximadamente R$11,00 em valor de ativo real: um dos indicadores de cobertura mais sólidos disponíveis no mercado de crédito estruturado via ECF no Brasil.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Como a operação se organiza</div>
+      <h2>Estrutura da operação</h2>
+      <p class="lead-p">Quatro partes formam a espinha dorsal jurídica e financeira da operação. O fluxo do direito de crédito (a CCB) e o fluxo do capital seguem caminhos espelhados, conectados pela Investplus.</p>
+    </div>
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 1000 480" width="100%">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#535A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+          <marker id="arrgold" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#9C7A29" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <!-- box 1: grupo proprietario -->
+        <rect x="60" y="30" width="260" height="68" rx="12" fill="#EEF0F3" stroke="#D7DAE1"/>
+        <text x="190" y="58" text-anchor="middle" font-size="14" font-weight="700" fill="#181C22">Grupo proprietário do imóvel</text>
+        <text x="190" y="78" text-anchor="middle" font-size="12" fill="#535A66">Detentor atual dos direitos do imóvel</text>
+
+        <line x1="190" y1="98" x2="190" y2="148" stroke="#535A66" stroke-width="1.6" marker-end="url(#arr)"/>
+        <text x="210" y="128" font-size="11.5" fill="#535A66">cede os direitos do contrato de compra e venda</text>
+
+        <!-- box 2: empresa emissora -->
+        <rect x="60" y="150" width="260" height="78" rx="12" fill="#003087" />
+        <text x="190" y="180" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Empresa emissora</text>
+        <text x="190" y="198" text-anchor="middle" font-size="12" fill="#CFE0F8">Nova SPE · devedora da CCB</text>
+        <text x="190" y="216" text-anchor="middle" font-size="11" fill="#9FC0EE">Garantia evolutiva em 2 fases</text>
+
+        <line x1="190" y1="228" x2="190" y2="278" stroke="#535A66" stroke-width="1.6" marker-end="url(#arr)"/>
+        <text x="210" y="258" font-size="11.5" fill="#535A66">emite a CCB (R$10MM) em favor de</text>
+
+        <!-- box 3: banco parceiro -->
+        <rect x="60" y="280" width="260" height="78" rx="12" fill="#F6EFDC" stroke="#E3CE9A"/>
+        <text x="190" y="310" text-anchor="middle" font-size="14" font-weight="700" fill="#6E5419">Banco parceiro</text>
+        <text x="190" y="328" text-anchor="middle" font-size="12" fill="#8A6E26">Credor formal da CCB (art. 26, Lei 10.931/04)</text>
+        <text x="190" y="346" text-anchor="middle" font-size="11" fill="#A4863C">Ex.: Grafeno, ou instituição equivalente</text>
+
+        <line x1="190" y1="358" x2="190" y2="408" stroke="#9C7A29" stroke-width="1.6" marker-end="url(#arrgold)"/>
+        <text x="210" y="388" font-size="11.5" fill="#9C7A29">endossa o crédito (art. 29, §1º) a</text>
+
+        <!-- box 4: investidores -->
+        <rect x="60" y="410" width="260" height="62" rx="12" fill="#E5F6EA" stroke="#BCE6C9"/>
+        <text x="190" y="436" text-anchor="middle" font-size="14" font-weight="700" fill="#017A2C">Investidores</text>
+        <text x="190" y="454" text-anchor="middle" font-size="12" fill="#1E8A45">Credores por endosso · via Investplus</text>
+
+        <!-- cash flow return path -->
+        <path d="M340 441 C 560 441, 560 188, 340 188" fill="none" stroke="#9C7A29" stroke-width="1.6" stroke-dasharray="5 5" marker-end="url(#arrgold)"/>
+        <rect x="430" y="280" width="280" height="64" rx="10" fill="#FFFFFF" stroke="#E3CE9A"/>
+        <text x="570" y="305" text-anchor="middle" font-size="12.5" font-weight="700" fill="#6E5419">Recursos captados (R$10MM)</text>
+        <text x="570" y="322" text-anchor="middle" font-size="11.5" fill="#8A6E26">Via conta escrow administrada pela Investplus</text>
+
+        <!-- investplus connecting label -->
+        <rect x="430" y="30" width="280" height="76" rx="12" fill="#fff" stroke="#D7DAE1" stroke-dasharray="3 4"/>
+        <text x="570" y="58" text-anchor="middle" font-size="13" font-weight="700" fill="#003087">Investplus</text>
+        <text x="570" y="76" text-anchor="middle" font-size="11.5" fill="#535A66">Plataforma reguladora CVM 88/2022</text>
+        <text x="570" y="92" text-anchor="middle" font-size="11" fill="#8A8F99">Intermedia, escritura e fiscaliza a oferta</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Quem deve, quem recebe, como o investidor entra</div>
+      <h2>A estrutura da CCB</h2>
+      <p class="lead-p">A Cédula de Crédito Bancário (Lei nº 10.931/2004) exige uma instituição financeira como credora original — por isso a figura do Banco Parceiro. O investidor entra na operação como credor por <strong>endosso</strong>, com direito pleno aos juros pactuados.</p>
+    </div>
+    <div class="ccb-steps">
+      <div class="ccb-step debt">
+        <span class="tag">Devedora</span>
+        <h3>Empresa emissora</h3>
+        <p>A Nova SPE constituída para deter o imóvel emite a CCB no valor de R$10 milhões, com garantia estruturada em duas fases — cessão fiduciária dos direitos do imóvel e opção de conversão em participação na SPE, evoluindo para alienação fiduciária do imóvel após a quitação da aquisição —, prometendo pagamento de CDI + 5% a.a. com vencimento bullet em 18 meses.</p>
+      </div>
+      <div class="ccb-arrow">→</div>
+      <div class="ccb-step bank">
+        <span class="tag">Credor formal</span>
+        <h3>Banco parceiro</h3>
+        <p>Instituição financeira habilitada a figurar como credora original de uma CCB (art. 26, Lei 10.931/2004). Recebe a cédula e viabiliza sua circulação, além de prover a infraestrutura de custódia e escrow da operação.</p>
+      </div>
+      <div class="ccb-arrow">→</div>
+      <div class="ccb-step inv">
+        <span class="tag">Credor por endosso</span>
+        <h3>Investidores</h3>
+        <p>Cada investidor recebe, via endosso em preto intermediado pela Investplus, a titularidade (integral ou fracionária) do crédito — com direito a cobrar juros e encargos exatamente como pactuado na cédula.</p>
+      </div>
+    </div>
+    <div class="law-note">
+      <strong>Base legal:</strong> o art. 29, §1º da Lei nº 10.931/2004 estabelece expressamente que a CCB é transferível mediante endosso em preto, e que o endossatário — <em>mesmo não sendo instituição financeira ou entidade a ela equiparada</em> — pode exercer todos os direitos conferidos pelo título, inclusive cobrar os juros e demais encargos pactuados. É esse dispositivo que permite que o investidor da Investplus se torne, de fato, credor da operação.
+    </div>
+  </div>
+</section>
+
+<section class="alt reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Transparência e proteção ao investidor</div>
+      <h2>Garantia em duas fases</h2>
+      <p class="lead-p">O imóvel está em fase final de aquisição pelo grupo proprietário junto à vendedora original. Por exigência contratual da vendedora, a garantia real sobre o imóvel só pode ser constituída após a quitação integral do preço de aquisição. Para que o investidor tenha transparência sobre esse processo — e segurança durante o intervalo até a quitação — a operação adota uma estrutura de garantia evolutiva, em duas fases.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card phase">
+        <span class="phase-badge">Fase 1 · vigente desde a captação</span>
+        <h3>Garantias intermediárias</h3>
+        <ul class="phase-list">
+          <li>CCB conversível em participação societária na Empresa Emissora, em até 20% das quotas/ações</li>
+          <li>Cessão fiduciária dos direitos do contrato de compra e venda do imóvel — sem necessidade de alienar o bem imediatamente</li>
+          <li>Reserva em conta escrow para os juros mensais, conforme detalhado no mecanismo de pagamento</li>
+        </ul>
+      </div>
+      <div class="card phase gold">
+        <span class="phase-badge gold">Fase 2 · após a quitação da aquisição</span>
+        <h3>Garantia real definitiva</h3>
+        <ul class="phase-list">
+          <li>Constituição e registro da alienação fiduciária do imóvel, avaliado em R$110 milhões</li>
+          <li>A cessão fiduciária dos direitos contratuais é substituída pela garantia real sobre o ativo já adquirido</li>
+          <li>LTV de apenas 9,1% entre o valor captado e o valor de mercado do imóvel</li>
+        </ul>
+      </div>
+    </div>
+    <div class="law-note">
+      <strong>Acompanhamento ao investidor:</strong> a transição da Fase 1 para a Fase 2 é acompanhada e reportada pela Investplus à base de investidores, com prazos e marcos definidos em contrato — assegurando visibilidade sobre o andamento da quitação e da constituição da garantia real, sem exposição de informações sensíveis da negociação entre o grupo proprietário e a vendedora original.
+    </div>
+  </div>
+</section>
+
+<section class="alt reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Comparativo de investimento</div>
+      <h2>Como a oferta se posiciona</h2>
+      <p class="lead-p">Em termos de rentabilidade indicativa frente a alternativas tradicionais de renda fixa — considerando o CDI de referência em torno de 14,15% a.a. (jun/2026).</p>
+    </div>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Rentabilidade indicativa a.a.</th>
+          <th>% do CDI</th>
+          <th>Prazo</th>
+          <th>Garantia</th>
+          <th>Liquidez</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hero-row">
+          <td>CCB Projeto CEA II</td>
+          <td>≈ 19,15% (CDI + 5%)</td>
+          <td>≈ 135% do CDI</td>
+          <td>18 meses (bullet)</td>
+          <td>Real — imóvel, LTV 9,1%</td>
+          <td>Revenda entre investidores via plataforma</td>
+        </tr>
+        <tr>
+          <td>CDB tradicional (grande banco)</td>
+          <td>≈ 14,15% a 15,57%</td>
+          <td>100% a 110%</td>
+          <td>Variável</td>
+          <td><span class="pill gray">FGC até R$250 mil</span></td>
+          <td>Alta, em geral</td>
+        </tr>
+        <tr>
+          <td>Tesouro Selic</td>
+          <td>≈ 14,25%</td>
+          <td>≈ 100%</td>
+          <td>Variável</td>
+          <td><span class="pill gray">Soberana</span></td>
+          <td>Alta</td>
+        </tr>
+        <tr>
+          <td>Fundo DI (pós taxa de adm.)</td>
+          <td>≈ 13,4% a 14,0%</td>
+          <td>95% a 99%</td>
+          <td>Variável</td>
+          <td><span class="pill gray">Não aplicável</span></td>
+          <td>Alta</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p style="margin-top:14px;font-size:12.5px;color:var(--ink-faint)">Taxas indicativas, baseadas no CDI vigente em junho/2026. Tributação pela tabela regressiva de IR aplicável a renda fixa (17,5% para resgate entre 361 e 720 dias — faixa em que se encaixa o vencimento de 18 meses). Sem incidência relevante de IOF, dado o prazo da operação. Rentabilidade pós-fixada e sujeita à variação do CDI ao longo do período.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Mecanismo de pagamento</div>
+      <h2>Conta escrow e juros mensais</h2>
+      <p class="lead-p">Os juros são pagos mensalmente aos investidores. Para assegurar esse fluxo, 15% do valor captado é retido em conta escrow administrada pela Investplus em nome da Empresa Emissora — permanecendo sob gestão da plataforma até o vencimento, em 18 meses.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-row">
+        <div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">Valor da captação</div>
+          <div class="amt" id="amtLabel">R$ 10.000.000</div>
+          <input type="range" id="amtSlider" min="5000000" max="15000000" step="500000" value="10000000">
+          <div style="display:flex;justify-content:space-between;font-size:11.5px;color:rgba(255,255,255,0.5)">
+            <span>R$5MM</span><span>Teto CVM 88 — R$15MM</span>
+          </div>
+        </div>
+        <div class="calc-out">
+          <div class="box"><div class="v" id="outReserva">R$ 1.500.000</div><div class="l">RESERVA EM ESCROW (15%)</div></div>
+          <div class="box"><div class="v" id="outJuros">R$ 147.080 /mês</div><div class="l">JUROS MENSAIS (CDI+5%)</div></div>
+          <div class="box"><div class="v" id="outMeses">≈ 10,2 meses</div><div class="l">COBERTURA DA RESERVA</div></div>
+          <div class="box"><div class="v">18 meses</div><div class="l">VENCIMENTO BULLET</div></div>
+        </div>
+      </div>
+      <div class="calc-note">A cobertura em meses não depende do valor captado — depende apenas do percentual de reserva (15%) e da taxa pactuada (CDI+5%). Na taxa indicativa atual, a reserva cobre com folga os primeiros ~10 meses de juros; os meses remanescentes até o vencimento devem ser endereçados no plano de negócios da Empresa Emissora (receita operacional do ativo, antecipação de vendas das unidades retrofitadas, ou aporte complementar), com possibilidade de reforço periódico da reserva.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Por que estruturar sob a CVM 88/2022</div>
+      <h2>Ambiente regulado e liquidez</h2>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="ico">✓</div>
+        <h3>Dispensa de registro com proteção ao investidor</h3>
+        <p>A oferta é automaticamente dispensada de registro na CVM (art. 3º), desde que respeitados o teto de R$15 milhões, o prazo máximo de captação de 180 dias e o período de desistência mínimo de 5 dias — preservando agilidade sem abrir mão de proteção regulatória.</p>
+      </div>
+      <div class="card gold">
+        <div class="ico">↻</div>
+        <h3>Possibilidade de revenda entre investidores</h3>
+        <p>A Resolução CVM 88/2022 permite que a plataforma atue como intermediadora de transações subsequentes entre investidores (arts. 15 e 16), mediante autorização da Empresa Emissora — criando a possibilidade de revenda do crédito entre investidores, com potencial de liquidez parcial antes do vencimento da operação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt reveal" id="como-investir">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Passo a passo para o investidor</div>
+      <h2>Como investir nesta oferta</h2>
+      <p class="lead-p">Do primeiro acesso à confirmação do aporte, o processo é simples e conduzido integralmente dentro do ambiente regulado da Investplus.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-circle">1</div>
+        <h3>Acesse a página da oferta</h3>
+        <p>Visite a página do Projeto CEA II na Investplus, com todas as informações, documentos e condições da operação.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">2</div>
+        <h3>Faça seu cadastro</h3>
+        <p>Crie sua conta — ou faça login, se já for investidor — com verificação de identidade conforme exigido pela Resolução CVM 88/2022.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">3</div>
+        <h3>Escolha a quantidade de cotas</h3>
+        <p>Defina o valor que deseja investir, dentro dos limites mínimo e máximo estabelecidos para a oferta.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">4</div>
+        <h3>Confirme o investimento</h3>
+        <p>Revise as condições — CDI + 5% a.a., vencimento em 18 meses, garantia em duas fases — e confirme sua reserva.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">5</div>
+        <h3>Receba o contrato e as instruções</h3>
+        <p>Após a confirmação, você recebe por e-mail a CCB endossada em seu favor e as instruções de depósito para efetivar o aporte.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-circle">6</div>
+        <h3>Acompanhe sua posição</h3>
+        <p>Acompanhe os pagamentos mensais de juros e a evolução da garantia diretamente na sua área do investidor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand">INVESTPLUS</div>
+      <div style="font-size:13px;">Plataforma de equity crowdfunding regulada pela CVM · Resolução CVM nº 88/2022</div>
+    </div>
+    <div style="font-size:13px;">www.investplus.vc</div>
+  </div>
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="stamp-box">CONFIDENCIAL — NÃO DIVULGAR<span>Sem validade comercial</span></div>
+    </div>
+    <small>Este material é um esboço preliminar, de uso interno, preparado exclusivamente para fins de aprovação comercial de uma futura oferta pública nos termos da Resolução CVM nº 88/2022. Não representa oferta pública de valores mobiliários em curso, anúncio de início de oferta, material publicitário ou documento com validade comercial. Seu conteúdo é confidencial e não deve ser divulgado, copiado, reproduzido ou compartilhado com terceiros sob nenhuma circunstância. As condições, valores e percentuais aqui descritos são indicativos e estão sujeitos a alterações até a eventual aprovação e publicação oficial da oferta pela Investplus.</small>
+  </div>
+</footer>
+
+<script>
+  // escrow calculator
+  const ANNUAL_RATE = 0.1915; // CDI (~14.15%) + 5%
+  const MONTHLY_RATE = Math.pow(1+ANNUAL_RATE, 1/12) - 1;
+  const fmt = (n)=> 'R$ ' + Math.round(n).toLocaleString('pt-BR');
+
+  const slider = document.getElementById('amtSlider');
+  function updateCalc(){
+    const val = parseFloat(slider.value);
+    const reserva = val * 0.15;
+    const juros = val * MONTHLY_RATE;
+    const meses = reserva / juros;
+    document.getElementById('amtLabel').textContent = fmt(val);
+    document.getElementById('outReserva').textContent = fmt(reserva);
+    document.getElementById('outJuros').textContent = fmt(juros) + ' /mês';
+    document.getElementById('outMeses').textContent = '≈ ' + meses.toFixed(1).replace('.', ',') + ' meses';
+  }
+  slider.addEventListener('input', updateCalc);
+  updateCalc();
+</script>
+
+</body>
+</html>
