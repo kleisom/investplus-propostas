@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlantic Capital · Mútuo Imobiliário · Investplus — DRAFT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #003087;
+    --navy2:   #001f5c;
+    --green:   #00B140;
+    --green2:  #009935;
+    --gold:    #F5A623;
+    --amber:   #92400e;
+    --amberbg: #fffbeb;
+    --amberbd: #fde68a;
+    --dark:    #1A1A2E;
+    --gray:    #6B7280;
+    --light:   #F4F6FB;
+    --white:   #FFFFFF;
+    --border:  #E4E8F0;
+    --redbg:   #fef2f2;
+    --redbd:   #fecaca;
+    --red:     #991b1b;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px 48px;
+  }
+
+  /* ── BANNER DRAFT ─────────────────────────────────────── */
+  .draft-banner {
+    width: 100%;
+    max-width: 860px;
+    background: var(--amberbg);
+    border: 1.5px solid var(--amberbd);
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    padding: 10px 20px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .draft-banner .d-icon { font-size: 16px; flex-shrink: 0; }
+  .draft-banner p {
+    font-size: 11.5px;
+    color: var(--amber);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .draft-banner p span { font-weight: 800; text-transform: uppercase; letter-spacing: .5px; }
+
+  /* ── LAMINA CONTAINER ─────────────────────────────────── */
+  .lamina {
+    width: 100%;
+    max-width: 860px;
+    background: var(--white);
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px rgba(0,48,135,.12), 0 2px 8px rgba(0,0,0,.05);
+    border: 1.5px solid var(--amberbd);
+    border-top: none;
+  }
+
+  /* ── HEADER ───────────────────────────────────────────── */
+  .header {
+    background: var(--navy);
+    padding: 22px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand-investplus { display: flex; flex-direction: column; gap: 2px; }
+  .brand-investplus .label { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .brand-investplus .name { font-size: 22px; font-weight: 800; color: var(--white); letter-spacing: -.5px; }
+  .brand-investplus .name span { color: var(--green); }
+  .header-divider { width: 1px; height: 44px; background: rgba(255,255,255,.18); flex-shrink: 0; }
+  .brand-atlantic { display: flex; flex-direction: column; gap: 2px; }
+  .brand-atlantic .label { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.45); }
+  .brand-atlantic .name { font-family: 'DM Serif Display', Georgia, serif; font-size: 22px; color: var(--white); }
+  .badge-header {
+    margin-left: auto;
+    background: rgba(0,177,64,.15);
+    border: 1px solid rgba(0,177,64,.35);
+    color: #4fe88a;
+    font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+    text-transform: uppercase; padding: 5px 13px; border-radius: 20px; white-space: nowrap;
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    padding: 40px 36px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #fafcff 0%, #f0f4fb 100%);
+  }
+  .hero-text .eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--navy); opacity: .6; margin-bottom: 10px;
+  }
+  .hero-text h1 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 32px; line-height: 1.2; color: var(--navy); margin-bottom: 14px; max-width: 440px;
+  }
+  .hero-text h1 em { font-style: italic; color: var(--green); }
+  .hero-text p { font-size: 13.5px; line-height: 1.65; color: var(--gray); max-width: 420px; }
+
+  .hero-number {
+    display: flex; flex-direction: column; align-items: center;
+    background: var(--navy); border-radius: 16px; padding: 28px 32px; min-width: 192px;
+    position: relative; overflow: hidden;
+  }
+  .hero-number::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%; background: var(--green);
+  }
+  .hero-number .num-label { font-size: 10px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 8px; text-align: center; }
+  .hero-number .num-value { font-family: 'DM Serif Display', Georgia, serif; font-size: 52px; line-height: 1; color: var(--white); }
+  .hero-number .num-period { font-size: 16px; font-weight: 500; color: var(--green); margin-top: 4px; letter-spacing: .5px; }
+  .hero-number .num-sub { font-size: 10px; color: rgba(255,255,255,.38); margin-top: 10px; text-align: center; line-height: 1.5; }
+
+  /* ── QUICK STATS ──────────────────────────────────────── */
+  .quick-stats { display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 1px solid var(--border); }
+  .stat-item { padding: 20px 20px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 4px; }
+  .stat-item:last-child { border-right: none; }
+  .stat-icon { font-size: 18px; margin-bottom: 4px; }
+  .stat-label { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray); }
+  .stat-value { font-size: 19px; font-weight: 800; color: var(--navy); letter-spacing: -.4px; line-height: 1.1; }
+  .stat-value.green { color: var(--green); font-size: 14px; line-height: 1.25; }
+  .stat-sub { font-size: 11px; color: var(--gray); }
+
+  /* ── TABELA RENTABILIDADE ─────────────────────────────── */
+  .section { padding: 28px 36px; border-bottom: 1px solid var(--border); }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); opacity: .5; margin-bottom: 16px; }
+
+  .rate-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  .rate-table thead tr { background: var(--navy); }
+  .rate-table thead th { padding: 12px 18px; font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,.65); text-align: left; }
+  .rate-table thead th:not(:first-child) { text-align: center; }
+  .rate-table tbody tr { border-bottom: 1px solid var(--border); }
+  .rate-table tbody tr:last-child { border-bottom: none; }
+  .rate-table tbody tr:hover { background: #f4f8ff; }
+  .rate-table tbody td { padding: 14px 18px; font-size: 13.5px; color: var(--dark); }
+  .rate-table tbody td:first-child { font-weight: 600; color: var(--navy); }
+  .rate-table tbody td:not(:first-child) { text-align: center; }
+  .rate-pill { display: inline-block; color: var(--white); font-size: 12.5px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: .3px; }
+  .rate-pill.low { background: var(--green); }
+  .rate-pill.mid { background: #007a2e; }
+  .rate-pill.high { background: var(--navy); }
+  .rate-note { font-size: 11px; color: var(--gray); margin-top: 10px; display: flex; align-items: flex-start; gap: 6px; }
+
+  /* ── COMO FUNCIONA ────────────────────────────────────── */
+  .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  .step { display: flex; flex-direction: column; gap: 8px; position: relative; }
+  .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 14px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
+  .step:not(:last-child)::after { content: ''; position: absolute; top: 18px; left: 36px; width: calc(100% - 20px); height: 1px; background: linear-gradient(90deg, var(--navy) 0%, var(--border) 100%); opacity: .25; }
+  .step-icon { font-size: 19px; }
+  .step-title { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+  .step-desc { font-size: 11.5px; color: var(--gray); line-height: 1.55; }
+
+  /* ── GARANTIA + LIQUIDEZ ──────────────────────────────── */
+  .bottom-row { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+  .guarantee-box { padding: 24px 28px; border-right: 1px solid var(--border); background: linear-gradient(135deg,#f0f7ff 0%,#e8f0fd 100%); display: flex; flex-direction: column; gap: 8px; }
+  .guarantee-box .gtitle { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); opacity: .5; }
+  .guarantee-box .gphrase { font-family: 'DM Serif Display', Georgia, serif; font-size: 21px; color: var(--navy); line-height: 1.25; }
+  .guarantee-box .gphrase span { color: var(--green); }
+  .guarantee-box .gdesc { font-size: 11.5px; color: var(--gray); line-height: 1.6; margin-top: 2px; }
+
+  .liquidity-box { padding: 24px 28px; display: flex; flex-direction: column; gap: 8px; }
+  .liquidity-box .ltitle { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green2); opacity: .7; }
+  .liquidity-box .lphrase { font-family: 'DM Serif Display', Georgia, serif; font-size: 21px; color: var(--navy); line-height: 1.25; }
+  .liquidity-box .ldesc { font-size: 11.5px; color: var(--gray); line-height: 1.6; margin-top: 2px; }
+
+  /* ── CTA ──────────────────────────────────────────────── */
+  .cta-strip { background: var(--green); padding: 20px 36px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid rgba(0,0,0,.08); }
+  .cta-strip .cta-text { font-size: 15px; font-weight: 700; color: var(--white); }
+  .cta-strip .cta-sub { font-size: 12px; color: rgba(255,255,255,.75); margin-top: 2px; }
+  .cta-btn { background: var(--white); color: var(--green2); font-size: 13px; font-weight: 800; letter-spacing: .4px; padding: 12px 28px; border-radius: 30px; text-decoration: none; white-space: nowrap; display: inline-block; transition: transform .15s; }
+  .cta-btn:hover { transform: scale(1.03); }
+
+  /* ── AVISO USO INTERNO ────────────────────────────────── */
+  .uso-interno {
+    background: var(--redbg);
+    border-top: 1px solid var(--redbd);
+    padding: 12px 36px;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .uso-interno p { font-size: 11.5px; color: var(--red); line-height: 1.55; }
+  .uso-interno p strong { font-weight: 700; }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  .footer { padding: 20px 36px; background: #f4f6fb; }
+  .footer-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+  .footer-badge { background: var(--navy); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; white-space: nowrap; }
+  .footer-badge.green { background: var(--green); }
+  .footer-reg { font-size: 11px; color: var(--gray); line-height: 1.45; }
+  .footer-reg strong { color: var(--navy); }
+  .disclaimer { font-size: 10.5px; color: #8a94a6; line-height: 1.7; text-align: justify; }
+  .disclaimer strong { color: #6b7280; }
+
+  /* ── RESPONSIVE ───────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 0 8px 32px; }
+    .draft-banner { border-radius: 0; margin-top: 0; }
+    .lamina { border-radius: 0; }
+    .header { padding: 18px 20px; flex-wrap: wrap; }
+    .badge-header { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 28px 20px; }
+    .hero-number { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .hero-number .num-value { font-size: 40px; }
+    .quick-stats { grid-template-columns: repeat(2,1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .stat-item:nth-child(3), .stat-item:nth-child(4) { border-top: 1px solid var(--border); }
+    .section { padding: 22px 20px; }
+    .steps-grid { grid-template-columns: repeat(2,1fr); }
+    .step:not(:last-child)::after { display: none; }
+    .bottom-row { grid-template-columns: 1fr; }
+    .guarantee-box { border-right: none; border-bottom: 1px solid var(--border); }
+    .cta-strip { flex-direction: column; text-align: center; padding: 20px; }
+    .footer { padding: 16px 20px; }
+    .uso-interno { padding: 12px 20px; }
+    .rate-table thead th, .rate-table tbody td { padding: 10px 10px; font-size: 11.5px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BANNER DRAFT -->
+<div class="draft-banner">
+  <span class="d-icon">⚠️</span>
+  <p>
+    <span>Material de estudo · Draft comercial · Uso interno Investplus e Atlantic Capital</span> —
+    Documento em elaboração, sujeito a validação jurídica e de compliance. Proibida a divulgação a terceiros ou uso em qualquer comunicação pública antes da aprovação formal das diretorias e da publicação das Informações Essenciais da Oferta.
+  </p>
+</div>
+
+<div class="lamina">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand-investplus">
+      <span class="label">Plataforma</span>
+      <span class="name">Invest<span>plus</span></span>
+    </div>
+    <div class="header-divider"></div>
+    <div class="brand-atlantic">
+      <span class="label">Emissor</span>
+      <span class="name">Atlantic Capital</span>
+    </div>
+    <span class="badge-header">🏛 Oferta Reg. CVM 88</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Mútuo Oneroso · Renda Fixa com Lastro Imobiliário</p>
+      <h1>Capital inteligente<br>em <em>imóveis reais</em><br>com deságio.</h1>
+      <p>
+        Você empresta para a Atlantic Capital, que adquire imóveis estressados abaixo do valor de mercado por meio de uma sociedade dedicada. Instrumento de dívida com remuneração prefixada e lastro em ativo real.
+      </p>
+    </div>
+    <div class="hero-number">
+      <span class="num-label">Rentabilidade</span>
+      <span class="num-value">2,50%</span>
+      <span class="num-period">ao mês</span>
+      <span class="num-sub">Maior faixa · prazo 36 meses<br>Taxas a partir de 1,60% a.m.</span>
+    </div>
+  </section>
+
+  <!-- QUICK STATS -->
+  <div class="quick-stats">
+    <div class="stat-item">
+      <span class="stat-icon">💰</span>
+      <span class="stat-label">Mínimo</span>
+      <span class="stat-value">R$ 20K</span>
+      <span class="stat-sub">por investidor</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">📅</span>
+      <span class="stat-label">Prazos</span>
+      <span class="stat-value">12, 24<br>ou 36m</span>
+      <span class="stat-sub">à escolha do investidor</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">🔒</span>
+      <span class="stat-label">Garantia</span>
+      <span class="stat-value green">Quotas da SPE<br>lastreadas em imóvel</span>
+      <span class="stat-sub">via Agente Investplus</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-icon">🔄</span>
+      <span class="stat-label">Liquidez</span>
+      <span class="stat-value" style="font-size:14px;line-height:1.25;">Revenda<br>entre investidores</span>
+      <span class="stat-sub">intermediada pela plataforma</span>
+    </div>
+  </div>
+
+  <!-- TABELA RENTABILIDADE -->
+  <div class="section">
+    <p class="section-title">Tabela de rentabilidade por faixa e prazo</p>
+    <table class="rate-table">
+      <thead>
+        <tr>
+          <th>Faixa de investimento</th>
+          <th>12 meses</th>
+          <th>24 meses</th>
+          <th>36 meses</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R$ 20.000 — R$ 100.000</td>
+          <td><span class="rate-pill low">1,60% a.m.</span></td>
+          <td><span class="rate-pill low">1,80% a.m.</span></td>
+          <td><span class="rate-pill low">2,00% a.m.</span></td>
+        </tr>
+        <tr>
+          <td>R$ 100.001 — R$ 500.000</td>
+          <td><span class="rate-pill mid">1,80% a.m.</span></td>
+          <td><span class="rate-pill mid">2,00% a.m.</span></td>
+          <td><span class="rate-pill mid">2,20% a.m.</span></td>
+        </tr>
+        <tr>
+          <td>Acima de R$ 500.000</td>
+          <td><span class="rate-pill high">2,00% a.m.</span></td>
+          <td><span class="rate-pill high">2,25% a.m.</span></td>
+          <td><span class="rate-pill high">2,50% a.m.</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="rate-note">
+      <span>ℹ️</span>
+      <span>Taxas prefixadas, contratuais e iguais para todos os investidores na mesma faixa. Sem taxa de entrada. Remuneração sujeita à capacidade de pagamento da emissora.</span>
+    </p>
+  </div>
+
+  <!-- COMO FUNCIONA -->
+  <div class="section">
+    <p class="section-title">Como funciona</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <span class="step-icon">✍️</span>
+        <span class="step-title">Você assina o mútuo</span>
+        <span class="step-desc">Contrato de mútuo oneroso na plataforma Investplus. Seu aporte fica em conta escrow segura até o encerramento da captação.</span>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <span class="step-icon">🏗️</span>
+        <span class="step-title">Atlantic constitui a SPE e adquire o imóvel</span>
+        <span class="step-desc">Com os recursos, a Atlantic capitaliza uma sociedade dedicada (SPE), que adquire o imóvel estressado com deságio.</span>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <span class="step-icon">🔒</span>
+        <span class="step-title">Garantia registrada pela Investplus</span>
+        <span class="step-desc">As quotas da SPE são alienadas fiduciariamente. A Investplus, como Agente de Garantia, representa todos os investidores.</span>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <span class="step-icon">💸</span>
+        <span class="step-title">Você recebe a remuneração</span>
+        <span class="step-desc">Juros conforme o contrato. No vencimento, o principal é devolvido com os juros acumulados.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GARANTIA + LIQUIDEZ -->
+  <div class="bottom-row">
+    <div class="guarantee-box">
+      <span class="gtitle">Garantia</span>
+      <p class="gphrase">Quotas com<br><span>lastro em imóvel real.</span></p>
+      <p class="gdesc">
+        As quotas da SPE que detém os imóveis são alienadas fiduciariamente em benefício dos investidores, representados pela <strong>Investplus como Agente de Garantia</strong>. Em caso de inadimplemento, a Investplus consolida as quotas e acessa o ativo real em favor dos mutuantes.
+      </p>
+    </div>
+    <div class="liquidity-box">
+      <span class="ltitle">Liquidez</span>
+      <p class="lphrase">Quer sair antes?<br>Revenda entre investidores.</p>
+      <p class="ldesc">
+        A Investplus pode intermediar a <strong>revenda do seu título entre outros investidores</strong> ativos na plataforma, sem necessidade de aguardar o vencimento. Sujeito à disponibilidade de compradores — não constitui liquidez garantida nem mercado regulamentado.
+      </p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div>
+      <p class="cta-text">Quer investir? Leia o material completo da oferta.</p>
+      <p class="cta-sub">Acesse as Informações Essenciais antes de tomar sua decisão.</p>
+    </div>
+    <a href="https://www.investplus.vc" class="cta-btn">Acessar oferta →</a>
+  </div>
+
+  <!-- AVISO USO INTERNO -->
+  <div class="uso-interno">
+    <span style="font-size:15px;flex-shrink:0;">🚫</span>
+    <p>
+      <strong>USO INTERNO — NÃO DIVULGAR.</strong>
+      Este material é um draft comercial em elaboração, para fins de estudo e validação interna entre Investplus e Atlantic Capital. Não representa oferta pública, não foi revisado pelo jurídico e não pode ser compartilhado com investidores, parceiros ou terceiros antes da aprovação formal e da publicação das Informações Essenciais da Oferta na plataforma Investplus.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <span class="footer-badge">CVM 88/2022</span>
+      <span class="footer-badge green">Oferta regulada</span>
+      <span class="footer-badge" style="background:#92400e;">Draft · Uso interno</span>
+      <p class="footer-reg">
+        <strong>Investplus (FCJ Invest S.A.)</strong> · CNPJ 38.268.345/0001-01 · Plataforma autorizada pela CVM ·
+        Rua Paraíba 1.323, Sala 22, 5º Andar, Savassi, Belo Horizonte/MG ·
+        <strong>Atlantic Venture Capital S.A.</strong> · CNPJ 47.149.134/0001-32
+      </p>
+    </div>
+    <p class="disclaimer">
+      <strong>ATENÇÃO — LEIA ANTES DE INVESTIR:</strong>
+      Este material é meramente informativo e de caráter comercial introdutório. Não constitui oferta pública de valores mobiliários, recomendação de investimento, promessa ou garantia de rentabilidade.
+      Investimentos em sociedades empresárias de pequeno porte, realizados por meio de plataformas de investimento participativo, <strong>envolvem riscos, incluindo a perda total do capital investido.</strong>
+      As taxas indicadas são prefixadas e contratuais, mas o recebimento está condicionado à capacidade de pagamento da emissora.
+      A garantia descrita recai sobre as quotas da SPE detentora dos imóveis, alienadas fiduciariamente em favor da comunhão de mutuantes representada pela Investplus — <strong>não é garantia individual direta sobre o imóvel.</strong>
+      Os imóveis são adquiridos após a captação, por meio de SPE constituída e controlada pela Atlantic Capital, nos termos do art. 47, alínea "f", da Resolução CVM nº 88/2022.
+      A revenda entre investidores não constitui liquidez garantida nem mercado secundário regulamentado (art. 15, § 2º, CVM 88).
+      <strong>Não invista sem ler as Informações Essenciais da Oferta (Anexo E), disponíveis na plataforma Investplus.</strong>
+      A CVM não analisa previamente as ofertas dispensadas de registro realizadas nos termos da Resolução CVM nº 88/2022.
+    </p>
+  </footer>
+
+</div><!-- /.lamina -->
+</body>
+</html>
